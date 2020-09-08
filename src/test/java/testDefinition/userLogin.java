@@ -25,12 +25,18 @@ public class userLogin {
         driver.findElement(By.id("nav-link-accountList")).click();
     }
 
-    @When("Enters credentials")
-    public void entersCredentials() {
-        driver.findElement(By.id("ap_email")).sendKeys("test@gmail.com");
+
+    @When("^Enters username as \"(.*)\"$")
+    public void entersCredentials(String username) {
+        driver.findElement(By.id("ap_email")).sendKeys(username);
         driver.findElement(By.id("continue")).click();
         driver.findElement(By.id("ap_password")).sendKeys("testpass");
         driver.findElement(By.id("signInSubmit")).click();
+    }
+
+    @When("^the user enters \"(.*)\" and \"(.*)\"$")
+    public void user_enters_username_and_password(String user, String pass) {
+
     }
 
     @Then("Info shows up")
